@@ -585,6 +585,12 @@ body {
   bottom: 10px;
   right: 10px; }
 
+/* Todo checkboxes */
+.content-node.todo .done {
+  display: inline-block;
+  width: 20px;
+  cursor: pointer; }
+
 /* Editor component
 ------------------------------------------------------- */
 .editor-component {
