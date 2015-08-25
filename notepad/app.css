@@ -624,4 +624,10 @@ body {
   background: rgba(234, 231, 35, 0.3); }
 
 .content-node.todo {
-  padding-bottom: 20px; }
+  padding-left: 20px;
+  padding-bottom: 20px;
+  position: relative; }
+
+.content-node.todo .done {
+  position: absolute;
+  left: 0px; }
