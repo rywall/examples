@@ -4,7 +4,7 @@
   "description": "Substance Demos",
   "license": "MIT",
   "dependencies": {
-    "substance": "substance/substance#master",
+    "substance": "substance/substance#key-bindings",
     "jquery": "*"
   },
   "devDependencies": {
