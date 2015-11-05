@@ -4,7 +4,7 @@
   "description": "Substance Demos",
   "license": "MIT",
   "dependencies": {
-    "substance": "substance/substance#ui-polish",
+    "substance": "substance/substance#master",
     "jquery": "*"
   },
   "devDependencies": {
