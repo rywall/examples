@@ -8,7 +8,7 @@ var Editor = require('substance/ui/editor');
 var Component = require('substance/ui/component');
 var $$ = Component.$$;
 
-$(function() { 
+$(function() {
   var proseEditor = Component.mount($$(Editor, {
     content: '<p>hello world</p>'
   }), $('#editor_container'));

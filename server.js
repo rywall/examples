@@ -1,22 +1,24 @@
-var http = require('http');
 var express = require('express');
 var path = require('path');
-var Substance = require("substance");
-var fs = require('fs');
 var app = express();
 var port = process.env.PORT || 5000;
 var browserify = require("browserify");
 var sass = require('node-sass');
 
+var handleError = function(err, res) {
+  console.error(err);
+  res.status(400).json(err);
+};
+
 // Basic integration example
 // --------------------
 
-app.get('/:name/app.js', function (req, res, next) {
+app.get('/:name/app.js', function (req, res) {
   var demoName = req.params.name;
   browserify({ debug: true, cache: false })
     .add(path.join(__dirname, demoName, 'app.js'))
     .bundle()
-    .on('error', function(err, data){
+    .on('error', function(err){
       console.error(err.message);
       res.send('console.log("'+err.message+'");');
     })
@@ -36,12 +38,6 @@ app.get('/:name/app.css', function(req, res) {
     res.send(result.css);
   });
 });
-
-
-var handleError = function(err, res) {
-  console.error(err);
-  res.status(400).json(err);
-};
 
 app.listen(port, function() {
   console.log("Lens running on port " + port);

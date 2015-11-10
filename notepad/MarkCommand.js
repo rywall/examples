@@ -1,13 +1,12 @@
 'use strict';
 
-var AnnotationCommand = require('substance/ui/commands/toggle_annotation');
+var AnnotationCommand = require('substance/ui/AnnotationCommand');
 
 var ToggleMarkCommand = AnnotationCommand.extend({
   static: {
-    name: 'toggleMark',
+    name: 'mark',
     annotationType: 'mark'
   }
 });
-
 
 module.exports = ToggleMarkCommand;

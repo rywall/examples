@@ -1,17 +1,18 @@
 'use strict';
 
-var $ = window.$ = require('jquery');
-var Notepad = require('./notepad');
-var Component = require('substance/ui/component');
+var doc = require('./exampleNote');
+var $ = window.$ = require('substance/util/jquery');
+var Component = require('substance/ui/Component');
+var Notepad = require('./Notepad');
 var $$ = Component.$$;
 
 $(function() {
-  var htmlContent = $('#editor_container').html();
-  $('#editor_container').empty();
+  // var htmlContent = $('#editor_container').html();
+  // $('#editor_container').empty();
+  // var htmlContent = $('#editor_container').html();
+  // var doc = new Article();
 
-  var notepad = $$(Notepad, {
-    content: htmlContent
-  });
-
-  Component.mount(notepad, $('#editor_container'));
+  Component.mount($$(Notepad, {
+    doc: doc
+  }), $('#editor_container'));
 });

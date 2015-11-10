@@ -1,10 +1,10 @@
 'use strict';
 
-var OO = require('substance/basics/oo');
-var Component = require('substance/ui/component');
+var oo = require('substance/util/oo');
+var Component = require('substance/ui/Component');
 var $$ = Component.$$;
-var TextProperty = require('substance/ui/text_property_component');
-var Icon = require('substance/ui/font_awesome_icon');
+var TextProperty = require('substance/ui/TextPropertyComponent');
+var Icon = require('substance/ui/FontAwesomeIcon');
 
 // Todo Component
 // -----------------
@@ -73,6 +73,6 @@ TodoComponent.Prototype = function() {
   };
 };
 
-OO.inherit(TodoComponent, Component);
+oo.inherit(TodoComponent, Component);
 
 module.exports = TodoComponent;

@@ -4,6 +4,7 @@ var $$ = Component.$$;
 var Controller = require('substance/ui/Controller');
 var ContainerEditor = require('substance/ui/ContainerEditor');
 var Icon = require('substance/ui/FontAwesomeIcon');
+
 var Toolbar = require('substance/ui/Toolbar');
 var UndoTool = require('substance/ui/UndoTool');
 var RedoTool = require('substance/ui/RedoTool');
@@ -11,10 +12,8 @@ var SwitchTextTypeTool = require('substance/packages/text/SwitchTextTypeTool');
 var StrongTool = require('substance/packages/strong/StrongTool');
 var EmphasisTool = require('substance/packages/emphasis/EmphasisTool');
 var LinkTool = require('substance/packages/link/LinkTool');
-var MarkTool = require('./MarkTool');
-var TodoTool = require('./TodoTool');
 
-var Notepad = Controller.extend({
+var ProseEditor = Controller.extend({
   // Editor configuration
   static: {
     config: {
@@ -23,9 +22,10 @@ var Notepad = Controller.extend({
         // Component registry
         components: {
           'paragraph': require('substance/packages/paragraph/ParagraphComponent'),
-          'link': require('substance/packages/link/LinkComponent'),
-          'todo': require('./TodoComponent'),
-          'codeblock': require('substance/packages/codeblock/CodeblockComponent')
+          'heading': require('substance/packages/heading/HeadingComponent'),
+          'blockquote': require('substance/packages/blockquote/BlockquoteComponent'),
+          'codeblock': require('substance/packages/codeblock/CodeblockComponent'),
+          'link': require('substance/packages/link/LinkComponent')
         },
         // Controller commands
         commands: [
@@ -40,10 +40,7 @@ var Notepad = Controller.extend({
           require('substance/packages/text/SwitchTextTypeCommand'),
           require('substance/packages/strong/StrongCommand'),
           require('substance/packages/emphasis/EmphasisCommand'),
-          require('substance/packages/link/LinkCommand'),
-          require('./MarkCommand'),
-          require('./TodoCommand'),
-          
+          require('substance/packages/link/LinkCommand')
         ],
         textTypes: [
           {name: 'paragraph', data: {type: 'paragraph'}},
@@ -68,9 +65,7 @@ var Notepad = Controller.extend({
           $$(RedoTool).append($$(Icon, {icon: 'fa-repeat'})),
           $$(StrongTool).append($$(Icon, {icon: 'fa-bold'})),
           $$(EmphasisTool).append($$(Icon, {icon: 'fa-italic'})),
-          $$(MarkTool).append($$(Icon, {icon: 'fa-pencil'})),
-          $$(LinkTool).append($$(Icon, {icon: 'fa-link'})),
-          $$(TodoTool).append($$(Icon, {icon: 'fa-check-square-o'}))
+          $$(LinkTool).append($$(Icon, {icon: 'fa-link'}))
         )
       ),
       $$(ContainerEditor, {
@@ -84,4 +79,4 @@ var Notepad = Controller.extend({
   }
 });
 
-module.exports = Notepad;
+module.exports = ProseEditor;

@@ -1,11 +1,11 @@
 'use strict';
 
-var AnnotationTool = require('substance/ui/tools/annotation_tool');
+var AnnotationTool = require('substance/ui/AnnotationTool');
 
 var MarkTool = AnnotationTool.extend({
   static: {
     name: 'mark',
-    command: 'toggleMark'
+    command: 'mark'
   }
 });
 

@@ -1,41 +1,38 @@
 'use strict';
 
-var OO = require('substance/basics/oo');
-var Document = require('substance/document');
-var SubstanceArticle = require('substance/article');
-
-// Custom node implementations
-var Todo = require('./todo');
-var Mark = require('./mark');
+var OO = require('substance/util/oo');
+// var Document = require('substance/model/Document');
+var DocumentSchema = require('substance/model/DocumentSchema');
+var Article = require('../prose-editor/Article');
 
 // Custom schema
 // -----------------
 
-var schema = new Document.Schema("substance-note", "1.0.0");
+var schema = new DocumentSchema('substance-note', '1.0.0');
 schema.getDefaultTextType = function() {
-  return "paragraph";
+  return 'paragraph';
 };
 
 schema.addNodes([
-  Document.Paragraph,
-  Document.Emphasis,
-  Document.Strong,
-  Document.Link,
-  Todo,
-  Mark
+  require('substance/packages/paragraph/Paragraph'),
+  require('substance/packages/emphasis/Emphasis'),
+  require('substance/packages/strong/Strong'),
+  require('substance/packages/link/Link'),
+  require('./todo'),
+  require('./mark')
 ]);
 
 // Article class definition
 // -----------------
 
 var Note = function() {
-  SubstanceArticle.call(this, schema);
+  Article.call(this, schema);
 };
 
 Note.Prototype = function() {
   
 };
 
-OO.inherit(Note, SubstanceArticle);
+OO.inherit(Note, Article);
 
 module.exports = Note;

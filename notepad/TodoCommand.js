@@ -1,15 +1,15 @@
 'use strict';
 
-var OO = require('substance/basics/oo');
-var Command = require('substance/ui/commands/command');
+var oo = require('substance/util/oo');
+var SurfaceCommand = require('substance/ui/SurfaceCommand');
 
-var ToggleTodoCommand = function(surface) {
-  Command.call(this, surface);
+var TodoCommand = function(surface) {
+  SurfaceCommand.call(this, surface);
 };
 
-ToggleTodoCommand.Prototype = function() {
+TodoCommand.Prototype = function() {
   this.static = {
-    name: 'toggleTodo'
+    name: 'todo'
   };
 
   this.getSelection = function() {
@@ -17,6 +17,7 @@ ToggleTodoCommand.Prototype = function() {
   };
 
   this.getTargetType = function() {
+    // return 'paragraph';
     var sel = this.getSelection();
 
     if (sel.isNull() || !sel.isPropertySelection()) return null;
@@ -25,7 +26,6 @@ ToggleTodoCommand.Prototype = function() {
     var path = sel.getPath();
     var node = doc.get(path[0]);
     var nodeType = node.type;
-    
 
     if (nodeType === 'paragraph') {
       return 'todo';
@@ -34,13 +34,24 @@ ToggleTodoCommand.Prototype = function() {
     }
   };
 
+  this.getCommandState = function() {
+    var surface = this.getSurface();
+    var sel = this.getSelection();
+    var disabled = !surface.isEnabled() || sel.isNull() || !sel.isPropertySelection();
+    var targetType = this.getTargetType();
+
+    return {
+      targetType: targetType,
+      active: targetType !== 'todo',
+      disabled: disabled
+    };
+  };
+
   // Execute command and trigger transformations
   this.execute = function() {
     var sel = this.getSelection();
     if (!sel.isPropertySelection()) return;
-
     var surface = this.getSurface();
-    var editor = surface.getEditor();
     var targetType = this.getTargetType();
 
     if (targetType) {
@@ -50,13 +61,12 @@ ToggleTodoCommand.Prototype = function() {
         args.data = {
           type: targetType
         };
-        return editor.switchType(tx, args);
+
+        return surface.switchType(tx, args);
       });      
     }
   };
-
 };
 
-OO.inherit(ToggleTodoCommand, Command);
-
-module.exports = ToggleTodoCommand;
+oo.inherit(TodoCommand, SurfaceCommand);
+module.exports = TodoCommand;
