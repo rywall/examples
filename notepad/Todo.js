@@ -7,9 +7,6 @@ var Todo = TextNode.extend({
     content: "string"
   }
 });
-
-// HtmlImporter
-
 Todo.static.blockType = true;
 
 module.exports = Todo;
