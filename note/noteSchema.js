@@ -33,7 +33,9 @@ schema.getDefaultTextType = function() {
 
 schema.addNodes([
   require('substance/packages/paragraph/Paragraph'),
-  // require('substance/packages/heading/Heading'),
+  require('substance/packages/heading/Heading'),
+  require('substance/packages/codeblock/Codeblock'),
+  require('substance/packages/blockquote/Blockquote'),
   require('substance/packages/emphasis/Emphasis'),
   require('substance/packages/strong/Strong'),
   require('substance/packages/link/Link'),

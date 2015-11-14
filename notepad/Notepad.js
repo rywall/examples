@@ -23,9 +23,11 @@ var Notepad = Controller.extend({
         // Component registry
         components: {
           'paragraph': require('substance/packages/paragraph/ParagraphComponent'),
+          'heading': require('substance/packages/heading/HeadingComponent'),
           'link': require('substance/packages/link/LinkComponent'),
           'todo': require('./TodoComponent'),
-          'codeblock': require('substance/packages/codeblock/CodeblockComponent')
+          'codeblock': require('substance/packages/codeblock/CodeblockComponent'),
+          'blockquote': require('substance/packages/blockquote/BlockquoteComponent')
         },
         // Controller commands
         commands: [

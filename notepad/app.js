@@ -1,6 +1,5 @@
 'use strict';
 
-// var doc = require('./exampleNote');
 var $ = window.$ = require('substance/util/jquery');
 var Component = require('substance/ui/Component');
 var Notepad = require('./Notepad');
@@ -12,8 +11,7 @@ $(function() {
   var htmlContent = $('#editor_container').html();
   $('#editor_container').empty();
   var doc = importer.importDocument(htmlContent);
-  
-  console.log('doc', doc.toJSON());
+  console.log('converted doc', doc.toJSON());
 
   Component.mount($$(Notepad, {
     doc: doc

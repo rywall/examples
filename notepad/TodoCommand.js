@@ -17,11 +17,8 @@ TodoCommand.Prototype = function() {
   };
 
   this.getTargetType = function() {
-    // return 'paragraph';
     var sel = this.getSelection();
-
     if (sel.isNull() || !sel.isPropertySelection()) return null;
-
     var doc = this.getDocument();
     var path = sel.getPath();
     var node = doc.get(path[0]);
@@ -61,9 +58,9 @@ TodoCommand.Prototype = function() {
         args.data = {
           type: targetType
         };
-
         return surface.switchType(tx, args);
-      });      
+      });
+      return {status: 'ok'};
     }
   };
 };
