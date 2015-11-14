@@ -1,10 +1,10 @@
 {
-  "name": "substance-demos",
-  "repository": "substance/demos",
-  "description": "Substance Demos",
+  "name": "substance-examples",
+  "repository": "substance/examples",
+  "description": "Substance Examples",
   "license": "MIT",
   "dependencies": {
-    "substance": "substance/substance#master",
+    "substance": "substance/substance#converter-refactor",
     "jquery": "*"
   },
   "devDependencies": {
