@@ -1,7 +1,7 @@
 'use strict';
 
 var oo = require('substance/util/oo');
-var HtmlImporter = require('substance/model/HtmlImporter');
+var HTMLImporter = require('substance/model/HTMLImporter');
 var noteSchema = require('../note/noteSchema');
 var Note = require('../note/Note');
 
@@ -17,8 +17,8 @@ var converters = [
   require('./TodoHtmlConverter')
 ];
 
-function NoteHtmlImporter() {
-  NoteHtmlImporter.super.call(this, {
+function NoteHTMLImporter() {
+  NoteHTMLImporter.super.call(this, {
     schema: noteSchema,
     converters: converters,
     DocumentClass: Note,
@@ -26,9 +26,9 @@ function NoteHtmlImporter() {
   });
 }
 
-NoteHtmlImporter.Prototype = function() {
+NoteHTMLImporter.Prototype = function() {
 
 };
 
-oo.inherit(NoteHtmlImporter, HtmlImporter);
-module.exports = NoteHtmlImporter;
+oo.inherit(NoteHTMLImporter, HTMLImporter);
+module.exports = NoteHTMLImporter;
