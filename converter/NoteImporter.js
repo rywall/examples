@@ -7,6 +7,8 @@ var Note = require('../note/Note');
 
 var converters = [
   require('substance/packages/paragraph/ParagraphHtmlConverter'),
+  require('substance/packages/blockquote/BlockquoteHtmlConverter'),
+  require('substance/packages/codeblock/CodeblockHtmlConverter'),
   require('substance/packages/heading/HeadingHtmlConverter'),
   require('substance/packages/strong/StrongHtmlConverter'),
   require('substance/packages/emphasis/EmphasisHtmlConverter'),
