@@ -50,6 +50,10 @@
 .content-node.todo .done {
   position: absolute;
   left: 0px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 /* Shared demo styles */
