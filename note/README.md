@@ -12,4 +12,4 @@ Run and play with the test script:
 node testNote.js
 ```
 
-The Note article type is used in the [Notepad](../notepad) example.
+*The Note article type is used in the [Notepad](../notepad) example.*

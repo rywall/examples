@@ -17,8 +17,8 @@ var converters = [
   require('./TodoHtmlConverter')
 ];
 
-function NoteHTMLImporter() {
-  NoteHTMLImporter.super.call(this, {
+function NoteImporter() {
+  NoteImporter.super.call(this, {
     schema: noteSchema,
     converters: converters,
     DocumentClass: Note,
@@ -26,9 +26,12 @@ function NoteHTMLImporter() {
   });
 }
 
-NoteHTMLImporter.Prototype = function() {
+NoteImporter.Prototype = function() {
 
 };
 
-oo.inherit(NoteHTMLImporter, HTMLImporter);
-module.exports = NoteHTMLImporter;
+// Expose converters so we can reuse them in NoteHtmlExporter
+NoteImporter.converters = converters;
+
+oo.inherit(NoteImporter, HTMLImporter);
+module.exports = NoteImporter;
