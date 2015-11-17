@@ -6,15 +6,15 @@ var noteSchema = require('../note/noteSchema');
 var Note = require('../note/Note');
 
 var converters = [
-  require('substance/packages/paragraph/ParagraphHtmlConverter'),
-  require('substance/packages/blockquote/BlockquoteHtmlConverter'),
-  require('substance/packages/codeblock/CodeblockHtmlConverter'),
-  require('substance/packages/heading/HeadingHtmlConverter'),
-  require('substance/packages/strong/StrongHtmlConverter'),
-  require('substance/packages/emphasis/EmphasisHtmlConverter'),
-  require('substance/packages/link/LinkHtmlConverter'),
-  require('./MarkHtmlConverter'),
-  require('./TodoHtmlConverter')
+  require('substance/packages/paragraph/ParagraphHTMLConverter'),
+  require('substance/packages/blockquote/BlockquoteHTMLConverter'),
+  require('substance/packages/codeblock/CodeblockHTMLConverter'),
+  require('substance/packages/heading/HeadingHTMLConverter'),
+  require('substance/packages/strong/StrongHTMLConverter'),
+  require('substance/packages/emphasis/EmphasisHTMLConverter'),
+  require('substance/packages/link/LinkHTMLConverter'),
+  require('./MarkHTMLConverter'),
+  require('./TodoHTMLConverter')
 ];
 
 function NoteImporter() {
@@ -27,7 +27,10 @@ function NoteImporter() {
 }
 
 NoteImporter.Prototype = function() {
-
+  this.convertDocument = function(documentEl) {
+    var bodyEl = documentEl.find('body');
+    this.convertContainer(bodyEl.children, this.config.containerId);
+  }
 };
 
 // Expose converters so we can reuse them in NoteHtmlExporter

@@ -2,12 +2,12 @@
 
 var DocumentSchema = require('substance/model/DocumentSchema');
 var TextNode = require('substance/model/TextNode');
-var Annotation = require('substance/model/Annotation');
+var PropertyAnnotation = require('substance/model/PropertyAnnotation');
 
 /**
   Simple mark for highlighting text in a note
 */
-var Mark = Annotation.extend({
+var Mark = PropertyAnnotation.extend({
   name: 'mark'
 });
 

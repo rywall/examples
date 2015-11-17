@@ -11,8 +11,6 @@ $(function() {
   var htmlContent = $('#editor_container').html();
   $('#editor_container').empty();
   var doc = importer.importDocument(htmlContent);
-  console.log('converted doc', doc.toJSON());
-
   Component.mount($$(Notepad, {
     doc: doc
   }), $('#editor_container'));
