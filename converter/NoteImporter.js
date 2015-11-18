@@ -27,10 +27,9 @@ function NoteImporter() {
 }
 
 NoteImporter.Prototype = function() {
-  this.convertDocument = function(documentEl) {
-    var bodyEl = documentEl.find('body');
-    this.convertContainer(bodyEl.children, this.config.containerId);
-  }
+  this.convertDocument = function(elements) {
+    this.convertContainer(elements, this.config.containerId);
+  };
 };
 
 // Expose converters so we can reuse them in NoteHtmlExporter
