@@ -12,17 +12,13 @@ var Note = function(schema) {
 
   // Holds a sequence of node ids
   this.create({
-    type: "container",
-    id: "body",
+    type: 'container',
+    id: 'body',
     nodes: []
   });
 };
 
-Note.Prototype = function() {
-
-};
-
-oo.inherit(Note, Document);
+Document.extend(Note)
 Note.schema = noteSchema;
 
 module.exports = Note;

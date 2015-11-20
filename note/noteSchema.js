@@ -1,27 +1,33 @@
 'use strict';
 
 var DocumentSchema = require('substance/model/DocumentSchema');
-var TextNode = require('substance/model/TextNode');
+var TextBlock = require('substance/model/TextBlock');
 var PropertyAnnotation = require('substance/model/PropertyAnnotation');
 
 /**
   Simple mark for highlighting text in a note
 */
-var Mark = PropertyAnnotation.extend({
-  name: 'mark'
-});
+
+function Mark() {
+  Mark.super.apply(this, arguments);
+}
+PropertyAnnotation.extend(Mark);
+Mark.static.name = 'mark';
 
 /**
   Todo item represented with annotated text (content) and boolean flag (done).
 */
-var Todo = TextNode.extend({
-  name: 'todo',
-  properties: {
-    done: 'bool',
-    content: "string"
-  }
+function Todo() {
+  Todo.super.apply(this, arguments);
+}
+
+TextBlock.extend(Todo);
+Todo.static.name = 'todo';
+
+Todo.static.defineSchema({
+  content: 'text',
+  done: 'bool'
 });
-Todo.static.blockType = true;
 
 /**
   Schema instance
