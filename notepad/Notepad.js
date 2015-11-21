@@ -18,6 +18,9 @@ var Notepad = Controller.extend({
   // Editor configuration
   static: {
     config: {
+      i18n: {
+        'todo.content': 'Todo'
+      },
       // Controller specific configuration (required!)
       controller: {
         // Component registry
