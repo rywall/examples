@@ -65,7 +65,7 @@ var Notepad = Controller.extend({
   // Custom Render method for your editor
   render: function() {
     var config = this.getConfig();
-    return $$('div').addClass('sc-prose-editor').append(
+    return $$('div').addClass('sc-notepad').append(
       $$(Toolbar).append(
         $$(Toolbar.Group).append(
           $$(SwitchTextTypeTool, {'title': this.i18n.t('switch_text')}),

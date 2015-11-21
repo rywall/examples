@@ -27,7 +27,6 @@
 @import '../node_modules/substance/packages/emphasis/_emphasis';
 @import '../node_modules/substance/packages/strong/_strong';
 
-
 /* Todo checkboxes */
 .content-node.todo .done {
   display: inline-block;
@@ -72,7 +71,7 @@ body {
 /* Editor component
 ------------------------------------------------------- */
 
-.sc-prose-editor {
+.sc-notepad {
   position: fixed;
   top: 10px;
   bottom: 40px;
