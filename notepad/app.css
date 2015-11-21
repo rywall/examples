@@ -100,7 +100,8 @@ body,
 input,
 textarea {
   color: rgba(0, 0, 0, 0.75);
-  font: 17px 'Lato', Arial;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+  font-size: 16px;
   min-height: 30px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased; }
@@ -131,7 +132,7 @@ h4, h5, h6 {
   padding-bottom: 10px; }
 
 p {
-  margin-bottom: 20px; }
+  /* margin-bottom:20px;*/ }
 
 p:last-child {
   margin-bottom: 0; }
@@ -299,73 +300,6 @@ a.quiet.active, a.quiet:hover {
   .menubar.dark .pill.active, .menubar.dark .pill:hover {
     background: rgba(255, 255, 255, 0.1); }
 
-/* Toolbar
--------------------------------------------------- */
-.toolbar {
-  height: 40px;
-  /* Toolbar Tool
-  ---------------------------- */
-  /* Toolbar Dropdown
-  ---------------------------- */
-  /* Toolbar Select
-  ---------------------------- */ }
-  .toolbar .tool-group {
-    float: left;
-    margin-right: 10px; }
-  .toolbar .tool {
-    line-height: normal;
-    margin: 5px;
-    float: left;
-    position: relative; }
-  .toolbar .tool.active {
-    background: rgba(0, 0, 0, 0.1); }
-  .toolbar .tool:hover {
-    background: rgba(0, 0, 0, 0.1); }
-  .toolbar .tool.disabled:hover {
-    background: none; }
-  .toolbar input {
-    margin: 5px;
-    margin-left: 20px;
-    min-width: 600px;
-    border: none; }
-  .toolbar .button {
-    height: 30px;
-    min-width: 30px;
-    text-align: center;
-    color: inherit; }
-  .toolbar .dropdown, .toolbar .select {
-    overflow: visible;
-    position: relative;
-    float: left; }
-    .toolbar .dropdown .toggle, .toolbar .select .toggle {
-      height: 30px;
-      padding: 0px 10px;
-      line-height: 30px;
-      margin: 5px;
-      display: block; }
-    .toolbar .dropdown:not(.disabled) .toggle:after, .toolbar .select:not(.disabled) .toggle:after {
-      content: " \f0d7";
-      padding-left: 10px;
-      float: right;
-      font-family: FontAwesome; }
-    .toolbar .dropdown .options, .toolbar .select .options {
-      display: none;
-      position: absolute;
-      top: 40px;
-      z-index: 5000;
-      min-width: 150px; }
-      .toolbar .dropdown .options .option, .toolbar .select .options .option {
-        display: block;
-        padding: 5px 10px;
-        width: 100%; }
-      .toolbar .dropdown .options .option:hover, .toolbar .select .options .option:hover {
-        background: rgba(0, 0, 0, 0.05); }
-    .toolbar .dropdown.open .options, .toolbar .open.select .options {
-      display: block; }
-  .toolbar .select .toggle {
-    background: white;
-    border: 1px solid #ddd; }
-
 /* Modal
 -------------------------------------------------- */
 .modal {
@@ -407,113 +341,509 @@ a.quiet.active, a.quiet:hover {
   .modal.medium .body {
     max-width: 800px; }
 
-.content-node.paragraph {
+/* Controller styles
+-----------------------------------------------------*/
+.sc-controller .se-clipboard {
+  position: fixed;
+  opacity: 0.0;
+  bottom: -1000px; }
+
+/* This actually happens inside a Surface
+----------------------------------------------------*/
+.sc-surface {
+  /* Non-Editables should have a regular cursor */ }
+  .sc-surface *[contenteditable="false"] {
+    cursor: default; }
+
+/* Panels (Context panel)
+-----------------------------------------------------*/
+.sc-panel .se-panel-content {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+  line-height: 24px; }
+
+.sc-panel .se-panel-content-inner {
+  position: relative; }
+
+.sc-panel.sm-dialog {
+  background: #F8F8F8; }
+  .sc-panel.sm-dialog .se-panel-content {
+    top: 40px; }
+  .sc-panel.sm-dialog .se-dialog-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    height: 40px;
+    border-bottom: 1px solid #ddd; }
+    .sc-panel.sm-dialog .se-dialog-header .se-back {
+      padding-left: 20px;
+      display: block;
+      float: left;
+      line-height: 40px;
+      font-size: 16px; }
+    .sc-panel.sm-dialog .se-dialog-header .se-label {
+      padding: 0px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 39px;
+      float: left; }
+    .sc-panel.sm-dialog .se-dialog-header .se-actions {
+      overflow: hidden;
+      float: right; }
+      .sc-panel.sm-dialog .se-dialog-header .se-actions a {
+        display: block;
+        float: left;
+        font-weight: 600;
+        padding: 0px 4px;
+        font-size: 12px;
+        line-height: 40px;
+        margin-right: 20px; }
+
+/* Content Panel
+-----------------------------------------------------*/
+.sc-content-panel {
+  /* For debugging purposes */
+  /* Hide native scroll bar in content panel */ }
+  .sc-content-panel .se-panel-content {
+    left: 20px; }
+  .sc-content-panel .se-scanline {
+    position: absolute;
+    display: none;
+    top: 50px;
+    left: 40px;
+    width: 10px;
+    height: 2px;
+    background: #ccc; }
+  .sc-content-panel .se-panel-content::-webkit-scrollbar {
+    width: 0px;
+    height: 0px; }
+  .sc-content-panel .se-panel-content::-webkit-scrollbar-thumb {
+    background-color: transparent; }
+
+.sc-context-toggles {
+  height: 40px;
+  border-bottom: 1px solid #ddd; }
+  .sc-context-toggles .se-context-toggle {
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 20px;
+    color: #444;
+    font-size: 12px;
+    font-weight: 600; }
+    .sc-context-toggles .se-context-toggle:hover {
+      background: #eee;
+      border-bottom: 1px solid #bbb; }
+    .sc-context-toggles .se-context-toggle.sm-active {
+      background: #eee;
+      border-bottom: 1px solid #444; }
+
+/* TOC Panel
+-----------------------------------------------------*/
+.sc-toc-panel .se-toc-entries {
+  padding: 20px 0px; }
+  .sc-toc-panel .se-toc-entries .se-toc-entry {
+    color: #777;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    display: block;
+    padding: 2px 0px;
+    position: relative; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry i.fa {
+      font-size: 12px;
+      visibility: hidden;
+      display: inline-block;
+      padding-right: 5px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-active {
+      color: #222; }
+      .sc-toc-panel .se-toc-entries .se-toc-entry.sm-active i.fa {
+        visibility: visible; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry:hover {
+      color: #222; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-1 {
+      font-size: 16px;
+      margin-left: 20px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-2 {
+      font-size: 14px;
+      margin-left: 40px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-3 {
+      font-size: 12px;
+      margin-left: 60px; }
+
+.sc-scrollbar {
+  position: absolute;
+  left: 0px;
+  width: 20px;
+  top: 0px;
+  bottom: 0px;
+  background: #FAFAFA;
+  box-shadow: inset -4px 0 4px 0 rgba(25, 25, 25, 0.04); }
+  .sc-scrollbar .se-thumb {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    height: 0px;
+    background-color: rgba(0, 0, 0, 0.2); }
+  .sc-scrollbar .se-highlight {
+    position: absolute;
+    width: 100%;
+    background-color: #2B303B; }
+
+/* TOC Panel
+-----------------------------------------------------*/
+.sc-toc-panel .se-toc-entries {
+  padding: 20px 0px; }
+  .sc-toc-panel .se-toc-entries .se-toc-entry {
+    color: #777;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    display: block;
+    padding: 2px 0px;
+    position: relative; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry i.fa {
+      font-size: 12px;
+      visibility: hidden;
+      display: inline-block;
+      padding-right: 5px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-active {
+      color: #222; }
+      .sc-toc-panel .se-toc-entries .se-toc-entry.sm-active i.fa {
+        visibility: visible; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry:hover {
+      color: #222; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-1 {
+      font-size: 16px;
+      margin-left: 20px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-2 {
+      font-size: 14px;
+      margin-left: 40px; }
+    .sc-toc-panel .se-toc-entries .se-toc-entry.sm-level-3 {
+      font-size: 12px;
+      margin-left: 60px; }
+
+/* StatusBar Component
+-----------------------------------------------------*/
+.status-bar-component {
+  border-top: 1px solid #ddd;
+  position: fixed;
+  height: 25px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+  line-height: 25px;
+  font-size: 12px; }
+
+.status-bar-component.error {
+  background: #F4E2E2;
+  color: #c83939; }
+
+.status-bar-component.success {
+  background: #E3EAD6;
+  color: #476247; }
+
+.status-bar-component .document-status {
+  float: left;
+  padding: 0 20px; }
+
+.status-bar-component .icon {
+  float: right;
+  padding: 0 20px; }
+
+.status-bar-component .message {
+  float: right; }
+
+.sc-text-property .se-cursor {
+  outline: 1px solid #999; }
+
+.sc-text-property .se-selection-fragment {
+  background-color: #ddd; }
+
+.sc-text-property .se-container-annotation.se-anchor {
+  position: relative; }
+
+/* Toolbar
+-------------------------------------------------- */
+.sc-toolbar {
+  height: 40px;
+  overflow: visible;
+  border-bottom: 1px solid #ddd;
+  font-size: 13px;
+  /* Toolbar group
+  ---------------------------- */
+  /* ???
+  ---------------------------- */
+  /* Toolbar Dropdown
+  ---------------------------- */ }
+  .sc-toolbar .se-toolbar-group {
+    float: left; }
+    .sc-toolbar .se-toolbar-group .se-tool {
+      line-height: normal;
+      float: left;
+      position: relative; }
+      .sc-toolbar .se-toolbar-group .se-tool button {
+        position: relative;
+        margin: 5px;
+        color: inherit;
+        height: 30px;
+        min-width: 30px;
+        text-align: center; }
+      .sc-toolbar .se-toolbar-group .se-tool.expand button::before, .sc-toolbar .se-toolbar-group .se-tool.truncate button::before {
+        content: " \f07e";
+        font-family: FontAwesome;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        font-size: 7px; }
+      .sc-toolbar .se-toolbar-group .se-tool.edit button::before {
+        content: " \f013";
+        font-family: FontAwesome;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        font-size: 7px; }
+      .sc-toolbar .se-toolbar-group .se-tool.sm-active button {
+        background: rgba(0, 0, 0, 0.1); }
+      .sc-toolbar .se-toolbar-group .se-tool button:hover {
+        background: rgba(0, 0, 0, 0.1); }
+      .sc-toolbar .se-toolbar-group .se-tool.sm-disabled {
+        opacity: 0.2;
+        cursor: default; }
+        .sc-toolbar .se-toolbar-group .se-tool.sm-disabled button:hover {
+          background: none; }
+  .sc-toolbar input {
+    margin: 5px;
+    margin-left: 20px;
+    min-width: 600px;
+    border: none; }
+  .sc-toolbar .se-toolbar-dropdown {
+    overflow: visible;
+    position: relative;
+    float: left; }
+    .sc-toolbar .se-toolbar-dropdown .se-toggle {
+      height: 30px;
+      padding: 0px 10px;
+      line-height: 30px;
+      margin: 5px;
+      display: block; }
+    .sc-toolbar .se-toolbar-dropdown:not(.sm-disabled) .se-toggle:after {
+      content: " \f0d7";
+      padding-left: 10px;
+      float: right;
+      font-family: FontAwesome; }
+    .sc-toolbar .se-toolbar-dropdown .se-options {
+      display: none;
+      position: absolute;
+      background: white;
+      top: 40px;
+      z-index: 5000;
+      min-width: 150px;
+      box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+      border: 1px solid #ddd; }
+      .sc-toolbar .se-toolbar-dropdown .se-options .se-tool {
+        display: block;
+        padding: 5px 10px;
+        width: 100%; }
+        .sc-toolbar .se-toolbar-dropdown .se-options .se-tool:hover {
+          background: rgba(0, 0, 0, 0.05); }
+        .sc-toolbar .se-toolbar-dropdown .se-options .se-tool.sm-disabled {
+          opacity: 0.2;
+          cursor: default; }
+          .sc-toolbar .se-toolbar-dropdown .se-options .se-tool.sm-disabled button:hover {
+            background: none; }
+    .sc-toolbar .se-toolbar-dropdown.sm-open .se-options {
+      display: block; }
+
+/* Switch Text Type Component
+---------------------------- */
+.sc-switch-text-type {
+  overflow: visible;
+  position: relative;
+  float: left;
+  width: 140px; }
+  .sc-switch-text-type .se-toggle {
+    background: white;
+    height: 30px;
+    padding: 0px 10px;
+    line-height: 30px;
+    margin: 5px;
+    display: block;
+    overflow: hidden; }
+  .sc-switch-text-type:not(.sm-disabled) .se-toggle:after {
+    content: " \f0d7";
+    padding-left: 10px;
+    float: right;
+    font-family: FontAwesome; }
+  .sc-switch-text-type.sm-disabled {
+    opacity: 0.4;
+    cursor: default; }
+    .sc-switch-text-type.sm-disabled:hover {
+      background: none; }
+  .sc-switch-text-type .se-options {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 40px;
+    z-index: 5000;
+    min-width: 150px;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd; }
+    .sc-switch-text-type .se-options .se-option {
+      display: block;
+      padding: 5px 10px;
+      width: 100%; }
+      .sc-switch-text-type .se-options .se-option:hover {
+        background: rgba(0, 0, 0, 0.05); }
+  .sc-switch-text-type.sm-open .se-options {
+    display: block; }
+
+.sc-paragraph {
   padding-bottom: 20px; }
 
-.content-node.heading {
+.sc-heading {
   padding-bottom: 20px;
-  font-weight: 600; }
+  font-weight: 600;
+  letter-spacing: -0.5px; }
 
-.content-node.heading.level-1 {
+.sc-heading.sm-level-1 {
   font-size: 24px;
   line-height: 28px; }
 
-.content-node.heading.level-2 {
+.sc-heading.sm-level-2 {
   font-size: 20px; }
 
-.content-node.heading.level-3 {
+.sc-heading.sm-level-3 {
   font-size: 16px; }
+
+/* SwitchTextTypeTool */
+.sc-switch-text-type .se-option.sm-heading1 {
+  font-size: 24px;
+  font-weight: 600; }
+
+.sc-switch-text-type .se-option.sm-heading2 {
+  font-size: 20px;
+  font-weight: 600; }
+
+.sc-switch-text-type .se-option.sm-heading3 {
+  font-size: 16px;
+  font-weight: 600; }
+
+.sc-blockquote {
+  border-left: 2px solid #ccc;
+  padding-left: 30px;
+  margin-bottom: 20px; }
+
+.sc-switch-text-type .se-option.sm-blockquote {
+  border-left: 2px solid #ccc;
+  padding-left: 30px; }
+
+.sc-codeblock {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 15px;
+  padding-bottom: 20px; }
+
+.sc-switch-text-type .se-option.sm-codeblock {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 15px; }
 
 /**
  * Substance List styles
  * -------
- * 
+ *
  * Used for ordered lists
  *
  * Supports nesting only up to level-4
  */
-.li.level-2 {
-  margin-left: 20px; }
-
-.li.level-3 {
-  margin-left: 40px; }
-
-.li.level-4 {
-  margin-left: 60px; }
-
-/* Spacing */
-.li.list-start {
-  padding-top: 20px; }
-
-.li.list-end {
-  padding-bottom: 20px; }
+.sc-li {
+  /* Spacing */ }
+  .sc-li.level-2 {
+    margin-left: 20px; }
+  .sc-li.level-3 {
+    margin-left: 40px; }
+  .sc-li.level-4 {
+    margin-left: 60px; }
+  .sc-li.se-list-start {
+    padding-top: 20px; }
+  .sc-li.se-list-end {
+    padding-bottom: 20px; }
 
 /**
  * Unordered lists
  * -------
  */
-.ul.li::before {
+ul.sc-list > .sc-li::before {
   content: "▪ "; }
 
 /**
  * Ordered lists
  * -------
- * 
+ *
  * Use CSS counters and support nesting up to level 4
  */
 /* When a new list occurs counters are reset */
-.list-start {
+.se-list-start {
   counter-reset: level1 level2 level3 level4 !important; }
 
 /* Resets for individual levels */
-.ol.li.level-1 {
+ol.sc-list > .sc-li.level-1 {
   counter-reset: level2 level3 level4; }
 
-.ol.li.level-2 {
+ol.sc-list > .sc-li.level-2 {
   counter-reset: level3 level4; }
 
-.ol.li.level-3 {
+ol.sc-list > .sc-li.level-3 {
   counter-reset: level4; }
 
 /* Counter displays for levels 1-3 */
-.ol.li.level-1::before {
+ol.sc-list > .sc-li.level-1::before {
   counter-increment: level1;
   content: counter(level1) ". "; }
 
-.ol.li.level-2::before {
+ol.sc-list > .sc-li.level-2::before {
   counter-increment: level2;
   content: counter(level1) "." counter(level2) ". "; }
 
-.ol.li.level-3::before {
+ol.sc-list > .sc-li.level-3::before {
   counter-increment: level3;
   content: counter(level1) "." counter(level2) "." counter(level3) ". "; }
 
-.ol.li.level-4::before {
+ol.sc-list > .sc-li.level-4::before {
   counter-increment: level4;
   content: counter(level1) "." counter(level2) "." counter(level3) "." counter(level4) ". "; }
 
-.annotation.link {
+.sc-link {
   color: #2079DC;
   border-bottom: 1px solid #CEDFF3; }
 
-.toolbar .tool.link .prompt {
+.sc-link-tool .se-prompt {
   padding: 15px;
   padding-bottom: 0px;
+  background: white;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
   position: absolute;
   left: -150px;
   top: 40px;
   z-index: 50000;
   width: 300px; }
-  .toolbar .tool.link .prompt .prompt-title {
+  .sc-link-tool .se-prompt .se-prompt-title {
     font-size: 16px;
     font-weight: bold; }
-  .toolbar .tool.link .prompt a.delete-link {
+  .sc-link-tool .se-prompt a.se-delete-link {
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 13px;
     color: red; }
-  .toolbar .tool.link .prompt input {
+  .sc-link-tool .se-prompt input {
     margin: 15px 0;
     width: 100%;
     font-size: 14px;
@@ -522,103 +852,65 @@ a.quiet.active, a.quiet:hover {
     min-width: auto;
     padding: 0 10px; }
 
-.content-node.codeblock {
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-  font-size: 16px;
-  padding-bottom: 20px; }
-
-.content-node.blockquote {
-  border-left: 2px solid #ccc;
-  font-family: Georgia;
-  padding-left: 30px;
-  font-size: 20px;
-  font-style: italic;
-  margin-bottom: 20px; }
-
-.text-tool-component.select .toggle {
-  width: 140px; }
-
-/* Special styles */
-.text-tool-component .option.heading1 {
-  font-size: 24px;
-  font-weight: 600; }
-
-.text-tool-component .option.heading2 {
-  font-size: 20px;
-  font-weight: 600; }
-
-.text-tool-component .option.heading3 {
-  font-size: 16px;
-  font-weight: 600; }
-
-.toolbar .tool.expand::before, .toolbar .tool.truncate::before {
-  content: " \f07e";
-  font-family: FontAwesome;
+.sc-embed-tool .se-prompt {
+  padding: 15px;
+  padding-bottom: 0px;
+  background: white;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
   position: absolute;
-  top: 3px;
-  right: 3px;
-  font-size: 7px; }
+  left: -150px;
+  top: 40px;
+  z-index: 50000;
+  width: 300px; }
+  .sc-embed-tool .se-prompt .se-prompt-title {
+    font-size: 16px;
+    font-weight: bold; }
+  .sc-embed-tool .se-prompt input {
+    margin: 15px 0;
+    width: 100%;
+    font-size: 14px;
+    display: block;
+    border: 1px solid #ddd;
+    min-width: auto;
+    padding: 0 10px; }
 
-.toolbar .tool.edit::before {
-  content: " \f013";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  font-size: 7px; }
-
-/* The invisible incredible Clipboard element
+/* Table nodes
 -----------------------------------------------------*/
-.clipboard {
-  position: fixed;
-  opacity: 0.0;
-  bottom: -1000px; }
+.table {
+  width: 100%;
+  margin: 10px 0px;
+  border-collapse: collapse;
+  table-layout: fixed; }
 
-body {
-  background: #f1f1f1;
-  padding: 30px;
-  overflow: hidden; }
+.table th, .table td {
+  border: 1px solid #efefef; }
 
-.footer {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  right: 10px; }
+.table th {
+  font-weight: bold;
+  background: #eee;
+  text-align: center; }
+
+.table td {
+  padding: 2px 5px; }
+
+.table .selected {
+  background-color: cyan; }
+
+.table.table-editing-mode .text-property {
+  cursor: default; }
+
+.sc-emphasis {
+  font-style: italic; }
+
+.sc-strong {
+  font-weight: bold; }
 
 /* Todo checkboxes */
 .content-node.todo .done {
   display: inline-block;
   width: 20px;
   cursor: pointer; }
-
-/* Editor component
-------------------------------------------------------- */
-.editor-component {
-  position: fixed;
-  top: 10px;
-  bottom: 40px;
-  left: 10px;
-  right: 10px;
-  border: 1px solid #ddd;
-  background: white;
-  color: #222; }
-
-.toolbar {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee; }
-
-.editor-component .container-node {
-  padding: 20px;
-  position: absolute;
-  top: 40px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  overflow: auto; }
 
 .annotation.mark {
   background: rgba(234, 231, 35, 0.3); }
@@ -630,4 +922,41 @@ body {
 
 .content-node.todo .done {
   position: absolute;
-  left: 0px; }
+  left: 0px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none; }
+
+/* Shared demo styles */
+body {
+  background: #f1f1f1;
+  padding: 30px;
+  overflow: hidden; }
+
+.footer {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  right: 10px; }
+
+/* Editor component
+------------------------------------------------------- */
+.sc-notepad {
+  position: fixed;
+  top: 10px;
+  bottom: 40px;
+  left: 10px;
+  right: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #222; }
+
+.sc-container-editor {
+  padding: 20px;
+  position: absolute;
+  top: 40px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: auto; }
